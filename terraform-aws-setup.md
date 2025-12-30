@@ -22,6 +22,7 @@ Step 1: Create IAM Role
 2. Trusted entity: AWS service
 3. Use case: EC2
 4. Attach permissions policy like - AmazonEC2FullAccess  
+  
 Step 2: Create an EC2 instance  
 1. Launch EC2 and configure  
 AMI: Ubuntu  
@@ -29,8 +30,10 @@ Instance type: t3.micro
 Key pair: Choose a key or create one  
 Security Group: Allow SSH (22) from your IP  
 2. Attach IAM role to it  
+  
 Step 3: Connect to EC2 from Your Local Terminal  
 From your local machine: ssh -i key.pem ec2-user@<EC2_PUBLIC_IP>  
+  
 Step 4: Install Terraform  
 1. Update system - sudo apt update && sudo apt upgrade -y
 2. Install dependencies - sudo apt install -y gnupg software-properties-common curl
@@ -42,13 +45,17 @@ sudo tee /etc/apt/sources.list.d/hashicorp.list
 sudo apt update  
 sudo apt install terraform -y  
 6. Verify - terraform -version  
-Step 6: Create Terraform Configuration
+  
+Step 5: Create Terraform Configuration
 1. mkdir terraform-demo
 2. cd terraform-demo
 3. nano main.tf
-Step 7: Run Terraform  
+  
+Step 6: Run Terraform  
 1. Initialize - terraform init
 2. Plan - terraform plan 
 3. Apply - terraform apply  
+  
 Step 8: Check if instance is ready according to configuration in file  
+  
 Step 9: Destroy Resources - terraform destroy

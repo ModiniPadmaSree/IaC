@@ -25,3 +25,19 @@ Resources:
       KeyName: !Ref KeyName
       SecurityGroupIds:
         - !Ref MySecurityGroup
+      Tags:
+        - Key: Name
+          Value: CloudFormation-Ubuntu-EC2
+        - Key: Environment
+          Value: Dev
+        - Key: Owner
+          Value: Padmasree
+
+Outputs:
+  EC2InstanceId:
+    Description: EC2 Instance ID
+    Value: !Ref MyEC2Instance
+
+  EC2PublicIP:
+    Description: Public IP address of the EC2 instance
+    Value: !GetAtt MyEC2Instance.PublicIp

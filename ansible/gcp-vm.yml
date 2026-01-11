@@ -1,0 +1,34 @@
+- name: Provision GCP Compute Engine VM using attached Service Account
+  hosts: localhost
+  connection: local
+  gather_facts: no
+
+  vars:
+    project_id: "gcp-project-id"
+    zone: "us-central1-a"
+    instance_name: "ansible-gcp"
+    machine_type: "e2-micro"
+    image_family: "ubuntu-2204-lts"
+    image_project: "ubuntu-os-cloud"
+    state: "present"
+
+  tasks:
+    - name: Create GCE instance
+      google.cloud.gcp_compute_instance:
+        name: "{{ instance_name }}"
+        project: "{{ project_id }}"
+        zone: "{{ zone }}"
+        machine_type: "{{ machine_type }}"
+        disks:
+          - auto_delete: true
+            boot: true
+            initialize_params:
+              source_image: "projects/{{ image_project }}/global/images/family/{{ image_family }}"
+        network_interfaces:
+          - network: default
+            access_configs:
+              - name: External NAT
+                type: ONE_TO_ONE_NAT
+        state: "{{ state }}"
+        auth_kind: application
+

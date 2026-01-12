@@ -31,4 +31,7 @@
                 type: ONE_TO_ONE_NAT
         state: "{{ state }}"
         auth_kind: application
+     - labels:
+        environment: training
+        tool: ansible
 

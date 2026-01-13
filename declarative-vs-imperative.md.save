@@ -1,0 +1,39 @@
+Infrastructure as Code (IaC) can be implemented using two main approaches: Declarative and Imperative. These approaches differ in how infrastructure is defined and managed.  
+Declarative Approach:  
+In the declarative approach, the user defines what the final desired state of the infrastructure should be, and the IaC tool determines how to achieve that state. The user does not specify the step-by-step process.  
+Declarative IaC focuses on outcomes rather than actions.  
+Examples  
+--Terraform: Users define the desired infrastructure using configuration files, and Terraform calculates the required changes.  
+--AWS CloudFormation: Templates describe the desired AWS resources, and CloudFormation provisions them automatically.  
+--Azure ARM Templates: Define Azure resources and their dependencies in JSON format.  
+Example Scenario:  
+A Terraform file specifies that an EC2 instance should exist. Terraform checks the current state and creates or updates the instance to match the desired configuration.
+Pros of Declarative Approach:  
+1. Ensures consistent infrastructure state
+2. Easier to understand and maintain
+3. Supports idempotency (same result every time)
+4. Automatically handles dependencies
+5. Suitable for large and complex infrastructures
+Cons of Declarative Approach:  
+1. Less control over execution order
+2. Debugging can be more difficult
+3. Requires understanding of the tool’s state management
+  
+Imperative Approach:  
+In the imperative approach, the user defines how the infrastructure should be created step by step. The tool executes instructions in the order specified by the user.  
+Imperative IaC focuses on actions and commands.  
+Examples  
+--Ansible: Uses playbooks that define tasks executed sequentially.  
+--Shell scripts: Commands are executed one after another to set up infrastructure.  
+Example Scenario:  
+An Ansible playbook installs packages, starts services, and configures settings in a specific sequence.  
+Pros of Imperative Approach:  
+1. Greater control over execution order
+2. Easier to understand for simple tasks
+3. Good for configuration management
+4. Flexible for custom operations
+Cons of Imperative Approach  
+1. Not inherently idempotent
+2. Higher risk of inconsistency
+3. Manual error handling required
+4. Harder to scale for large infrastructures  
